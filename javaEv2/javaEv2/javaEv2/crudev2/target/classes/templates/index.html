@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html
+  lang="es"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layouts/master}"
+>
+  <head>
+    <title th:replace="~{layouts/master :: title}">Inicio</title>
+  </head>
+  <body>
+    <div layout:fragment="page-content" class="container mx-auto py-8">
+      <!-- Ajuste para que las tarjetas estén siempre una debajo de otra -->
+      <div class="grid grid-cols-1 gap-6 px-4 md:px-8 lg:px-16">
+        <!-- Sección Crea tu Mesa -->
+        <div class="p-4 bg-cyan-600 rounded-md shadow-md">
+          <div>
+            <span class="block text-slate-200 text-xl font-bold">
+              Crea tu Mesa
+            </span>
+            <p class="text-slate-200">Gestiona las mesas de tu restaurante.</p>
+          </div>
+          <div class="flex space-x-4 mt-4">
+            <a
+              th:href="@{/mesa/nuevo}"
+              class="bg-white text-cyan-600 py-2 px-4 rounded hover:bg-cyan-500 hover:text-white"
+            >
+              Agregar
+            </a>
+            <a
+              th:href="@{/mesa}"
+              class="bg-white text-cyan-600 py-2 px-4 rounded hover:bg-cyan-500 hover:text-white"
+            >
+              Mostrar
+            </a>
+          </div>
+        </div>
+
+        <!-- Sección Reservas -->
+        <div class="p-4 bg-cyan-600 rounded-md shadow-md">
+          <div>
+            <span class="block text-slate-200 text-xl font-bold">Reservas</span>
+            <p class="text-slate-200">Gestiona las reservas de los clientes.</p>
+          </div>
+          <div class="flex space-x-4 mt-4">
+            <a
+              th:href="@{/reserva/nuevo}"
+              class="bg-white text-cyan-600 py-2 px-4 rounded hover:bg-cyan-700 hover:text-white"
+            >
+              Agregar
+            </a>
+            <a
+              th:href="@{/reserva}"
+              class="bg-white text-cyan-600 py-2 px-4 rounded hover:bg-cyan-700 hover:text-white"
+            >
+              Mostrar
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

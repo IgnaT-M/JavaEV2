@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layouts/master}">
+<link href="/css/styles.css" rel="stylesheet">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de reservas</title>
+</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web Inicio</title>
+</head>
+
+<body>
+    <div class="flex container mx-auto py-8 justify-center " layout:fragment="page-content">
+        <table class= "flex  bg-cyan-600 border-3 border-slate-700  rounded-lg shadow-lg shadow-cyan-900 p-3 ">
+            <tr class=" flex space-x-28 p-3 text-slate-200  ">
+                <th>Hora</th>
+                <th>mesa</th>
+                
+            </tr>
+            <tr class=" flex space-x-32 pl-4" th:each="reserva: ${reserva}">
+                <td  class=" text-slate-200" th:text="${reserva.hora}"></td>
+                
+                <td  class=" text-slate-200" th:text="${reserva.mesa.numero}"></td>
+                <td class=" flex space-x-6 text-slate-200 ">
+                    <a th:href="@{/reservas/editar/{id}(id=${reserva.id})}" class="bg-cyan-700 text-slate-200 py-2 px-4 rounded-md hover:bg-cyan-900">Editar</a>
+                    <a th:href="@{/reservas/eliminar/{id}(id=${reserva.id})}" class="bg-cyan-700 text-slate-200 py-2 px-4 rounded-md hover:bg-cyan-900">Eliminar</a>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+
+</body>
+
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html
+  lang="es"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+  <head>
+    <!-- Meta para diseño responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <title th:text="${pageTitle}">Sabor Gourmet</title>
+
+    <!-- Importar TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="flex flex-col min-h-screen bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-cyan-600 p-4 rounded-b-lg">
+      <div class="container mx-auto flex justify-between items-center">
+        <a th:href="@{/}" class="text-slate-200 text-4xl font-bold">
+          Sabor Gourmet
+        </a>
+        <ul class="flex space-x-4">
+          <li>
+            <a
+              th:href="@{/mesa}"
+              class="text-slate-200 hover:underline text-xl font-semibold"
+            >
+              Mesas
+            </a>
+          </li>
+          <li>
+            <a
+              th:href="@{/reserva}"
+              class="text-slate-200 hover:underline text-xl font-semibold"
+            >
+              Reservas
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="flex-grow">
+      <!-- Aquí se insertará el contenido específico de cada página -->
+      <div layout:fragment="page-content"></div>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="bg-cyan-800 text-slate-200 p-4">
+      <div class="container mx-auto text-center px-4">
+        <p>&copy; 2024 Sabor Gourmet. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+  </body>
+</html>

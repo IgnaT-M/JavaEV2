@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layouts/master}">
+<link href="/css/styles.css" rel="stylesheet">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de reservas</title>
+</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web Inicio</title>
+</head>
+
+<body>
+    <div class="row" layout:fragment="page-content">
+        <h3 class="block text-black-200 text-3xl font-bold text-center mb-6 mt-4" >Crear nueva reserva</h3>
+        <form class="grid grid-cols-1 gap-6 px-4 md:px-8 lg:px-16" th:action="@{/reserva/guardar}" th:object="${reserva}" method="post">
+            
+            <div class="p-4 bg-cyan-600 rounded-md shadow-md shadow-cyan-900 mt-4">
+                <div>
+                    <label  class="block text-slate-200 text-xl font-bold" for="hora">Hora:</label><br>
+                    <input class="rounded-md pb-3" id="hora" th:field="*{hora}" required></input>
+                    
+                </div>
+            </div>
+            
+            <div class="p-4 bg-cyan-600 rounded-md shadow-md shadow-cyan-900 mt-4">
+                <div  >
+                    <label class="block text-slate-200 text-xl font-bold" for="mesa">Mesa:</label><br>
+                    <select class="rounded-md p-2" th:field="*{mesa}">
+                        
+                        <option value="ingresa" disabled selected>Selecciona una mesa</option>
+                        <option th:each="mesa : ${mesa}" th:value="${mesa.id}" th:text="${mesa.id}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="mt-6 flex items-center justify-center">
+                <button type="submit" class="bg-cyan-600 text-slate-200 py-2 px-4 rounded-md hover:bg-cyan-800">
+                    Guardar reserva</button>
+            </div>
+    </div>
+    </form>
+    
+    </div>
+    <script layout:fragment="javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems);
+        });
+    </script>
+    
+    
+</body>
+
+
+</html>
